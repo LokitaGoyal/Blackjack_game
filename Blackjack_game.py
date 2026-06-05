@@ -44,13 +44,13 @@ def play_game():
         while len(dealer_cards) != 2:
             dealer_cards.append(deck.pop())
             if len(dealer_cards) == 2:
-                print("🤖 Dealer has X &", dealer_cards[1])
+                print("🤖 Dealer has", dealer_cards[0], "and X")
 
          # Player Cards
         while len(player_cards) != 2:
             player_cards.append(deck.pop())
             if len(player_cards) == 2:
-                print("💁 You have ", player_cards)
+                print("💁 You have a total of",total(player_cards),"from these cards",player_cards)
 
         # Check for tie (both have Blackjack)
         if total(player_cards) == 21 and total(dealer_cards) == 21:
@@ -145,6 +145,11 @@ def play_game():
         print("Current Best of 3: 🤖 Dealer-", str(dealer_score) ," times wins & 💁 You-" + str(player_score) + " times wins")
         print("Total games played: " + str(total_games))
         print("--------------------------------------------------")
+
+    if player_score > dealer_score:
+        print("🏆 You won the Best of 3 match!")
+    else:
+        print("🏆 Dealer won the Best of 3 match!")
 
 deck = create_deck()
 play_game()
